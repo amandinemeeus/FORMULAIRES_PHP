@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+if (isset($_SESSION['id'])) {
+  header('Location: compte.php')
+}
+
 if (!empty($_POST)){
   extract ($_POST);
   $erreur = [];

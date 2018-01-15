@@ -2,8 +2,7 @@
 
 function account_exists() : array {
     return [
-        'id' => 2,
-        'password' => 'azerty123'
+        
     ];
 }
 

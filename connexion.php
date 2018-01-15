@@ -1,6 +1,10 @@
 <?php
  
 session_start();
+if (isset($_SESSION['id'])) {
+  header('Location: compte.php')
+}
+
 if ( !empty($_POST) ) {
     extract( $_POST );
 
@@ -60,7 +64,7 @@ if ( !empty($_POST) ) {
           <?php endif; ?>
         
           <form action="connexion.php" method="post" class="p-y-3 p-x-2" novalidate>
-            <input type="email" name="email" class="form-control" placeholder="Adresse e-mail">
+            <input type="email" name="email" class="form-control" placeholder="Adresse e-mail" value="<?php if (isset($email) )echo $email ?>" >
             <input type="password" name="password" class="form-control" placeholder="Mot de passe">
             <input type="submit" class="btn btn-success m-b-1" value="Connexion">
             <a href="oubli.php" class="text-success">Mot de passe oublié ?</a>
