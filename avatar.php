@@ -5,15 +5,15 @@ if (!isset($_SESSION['id'])) {
   header('Location: connexion.php');
 }
 
-require 'include/function.php';
+require 'include/functions.php';
 
 $membre = account_informations();
 
-if ( isset($_FILES['avatar']) && $_FILES['avatar'['error'] == 0 ) {
+if ( isset($_FILES['avatar']) && $_FILES['avatar']['error'] == 0 ) {
   if (!in_array($_FILES['avatar']['type'], ['image/png', 'image/jpeg'])){
     $erreur = 'Format incorrect (PNG et JPEG acceptés)';
   }
-  elseif ($_FILES['avatar']['size'] > 102400){
+  elseif ($_FILES['avatar']['size'] > 102240){
     $erreur = 'Image trop volumnineuse (supérieure à 100Ko)';
   }
 
