@@ -5,6 +5,34 @@ if (!isset($_SESSION['id'])) {
   header('Location: connexion.php');
 }
 
+require 'include/function.php';
+
+$membre = account_informations();
+
+if ( isset($_FILES['avatar']) && $_FILES['avatar'['error'] == 0 ) {
+  if (!in_array($_FILES['avatar']['type'], ['image/png', 'image/jpeg'])){
+    $erreur = 'Format incorrect (PNG et JPEG acceptés)';
+  }
+  elseif ($_FILES['avatar']['size'] > 102400){
+    $erreur = 'Image trop volumnineuse (supérieure à 100Ko)';
+  }
+
+  if (!isset($erreur)){
+    $extension = str_replace('image/', '', $_FILES['avatar']['type'] );
+    $name = bin2hex( random_bytes(8)) . '.' . $extension;
+
+    if(move_uploaded_file($_FILES['avatar']['tmp_name'], 'img/' . $name)){
+      // mise à jour de la BDD et suppression ancienne image
+    
+      header('Location: avatar.php');
+    }
+    else{
+      $erreur = 'Erreur lors de l\'envoi du fichier';
+    }
+  }
+
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -7,6 +7,11 @@ function account_exists() : array {
     ];
 }
 
+function account_informations() : array {
+    return [];
+}
+
+
 function mail_free(): bool {
     return false;
 }
