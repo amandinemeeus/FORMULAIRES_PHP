@@ -55,7 +55,7 @@ if (!empty($_POST)){
   <body>
     
   <?php include 'include/header.php' ?>
-  
+
     <div class="container">
       <h1 class="text-xs-center">Inscription</h1>
       <div class="row">
@@ -73,8 +73,8 @@ if (!empty($_POST)){
             <div class= "alert alert-danger"><?=$erreur['passwordconf']?></div>
           <?php endif; ?>
 
-          <?php if (isset($erreur['validation'])) : ?>
-            <div class= "alert alert-success"><?=$erreur['validation']?></div>
+          <?php if ( isset( $validation ) ) : ?>
+            <div class="alert alert-success"><?= $validation ?></div>
           <?php endif; ?>
 
           <form action="inscription.php" method="post" class="p-y-3 p-x-2" novalidate>
