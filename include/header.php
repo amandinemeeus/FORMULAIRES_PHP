@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-success">
       <div class="container">
-        <a class="navbar-brand" href="index.php">monsite.dev</a>
+        <a class="navbar-brand" href="index.php">BeCode - CyCorp</a>
         <ul class="nav navbar-nav pull-xs-right text-xs-center">
           
             <?php if (isset($_SESSION['id'])) : ?>
