@@ -64,7 +64,7 @@ function bdd_update (string $query, array $params = []) : int {
 }
 
 function mail_free(): bool {
-    $membre = bdd_select('SELECT id FROM membre WHERE mail = ?' [$_POST['email']]);
+    $membre = bdd_select('SELECT id FROM membre WHERE mail = ?', [$_POST['email']]);
     if (!$membre){
         return true;
     }
