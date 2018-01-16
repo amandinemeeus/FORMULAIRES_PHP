@@ -1,10 +1,13 @@
 <?php 
 
 function account_exists() : array {
-    return [
-        'id' => 2, 
-        'password' => 'azerty123'
-    ];
+    $membre = bdd_select('SELECT id, password FROM membre WHERE mail = ?', [$_POST['email']]);
+    if (!empty($membre) && password_verify($_POST['password'], $membre[0]['password'])) {
+        return $membre[0];
+    }
+    else{
+        return [];
+    }
 }
 
 function account_informations() : array {
