@@ -50,6 +50,19 @@ function bdd_select(string $query, array $params = []){
     return $data;
 }
 
+function bdd_update (string $query, array $params = []) : int {
+    require 'pdo.php';
+    if ($params){
+        $req = $bdd->prepare($query);
+        $req->execute($params);
+    }
+    else{
+        $req = $bdd->query($query);
+    }
+    $updated = $req->rowCount();
+    return $updated;
+}
+
 function mail_free(): bool {
     return false;
 }
