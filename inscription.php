@@ -37,7 +37,11 @@ if (!empty($_POST)){
 
     if (!$erreur){
       //insertion du nouveau membre en BDD
-      unset( $email);
+      bdd_insert('INSERT INTO membre (mail, password) VALUES (:mail, :password)', [
+        'mail' => $email, 
+        'password' => password_hash($password, PASSWORD_DEFAULT)
+      ]);
+      unset( $email );
       $validation = 'Inscription réussie!';
     }
 }

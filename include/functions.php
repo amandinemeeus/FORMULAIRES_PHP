@@ -64,7 +64,13 @@ function bdd_update (string $query, array $params = []) : int {
 }
 
 function mail_free(): bool {
-    return false;
+    $membre = bdd_select('SELECT id FROM membre WHERE mail = ?' [$_POST['email']]);
+    if (!$membre){
+        return true;
+    }
+    else { 
+        return true;
+    }
 }
 
 function mail_html(string $subject, string $message){
@@ -81,14 +87,12 @@ function password_ok() : bool {
 
 function password_save(string $password = '') {
     $newpassword = $_POST['newpassword'] ?? $password;
-
     if (isset($POST['email'])) {
         //gestion pour l'oubli de mot de passe
     }
     else {
         //gestion pour changement de mot de passe
     }
-
 }; 
 
 ?>
